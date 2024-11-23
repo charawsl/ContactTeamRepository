@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yusheng.contactbackend1.mapper.PeopleMapper">
+    <!--    搜索人-->
+    <select id="page" resultType="com.yusheng.contactbackend1.pojo.People">
+        select *
+        from people
+        <where>
+            <if test="searchPeopleName != null">
+                name like concat('%',#{searchPeopleName},'%')
+            </if>
+            <if test="searchPeopleGender != null">
+                and gender = #{searchPeopleGender}
+            </if>
+            <if test="searchPeopleFavourite != null">
+                and favourate = #{searchPeopleFavourite}
+            </if>
+        </where>
+        limit #{start},#{pageSize}
+    </select>
+
+    <!--    //修改人-->
+    <update id="updatePeople">
+        update people
+        <set>
+            <if test="name != null and name != '' ">
+                name = #{name},
+            </if>
+            <if test="gender != null ">
+                gender = #{gender},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone = #{phone},
+            </if>
+            <if test="address != null and address != ''">
+                address = #{address},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime}
+            </if>
+        </set>
+        where id=#{id}
+
+    </update>
+    
+    <insert id="save" parameterType="java.util.List">
+        insert into people(name, gender, phone, address, create_time, update_time)
+        values 
+            <foreach collection="list" item = "item" separator=",">
+                (#{item.name},#{item.gender},#{item.phone},#{item.address},#{item.createTime},#{updateTime})
+            </foreach>
+
+    </insert>
+</mapper>
