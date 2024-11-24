@@ -414,7 +414,32 @@ export default{
             axios.get("http://121.37.25.182:8080/deleteByNumber/"+id)
             .then(() => {
             });
-        }
+        },
+        dda() {
+            if(this.people.id){
+
+                axios.post("http://121.37.25.182:8080/updatePeople", this.people)
+                .then(() => {
+                this.page();
+                this.addNumber();
+            })
+            }
+            else{
+
+
+                axios.post("http://121.37.25.182:8080/listPeople", this.people)
+                .then(() => {
+                this.page();
+            })
+            }
+
+        },
+        killthread(id){
+            axios.get("http://121.37.25.182:8080/deleteByNumber/"+id)
+            .then(() => {
+            });
+        },
+
 
 
     },
