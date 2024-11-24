@@ -409,6 +409,11 @@ export default{
             axios.get("http://121.37.25.182:8080/deleteByNumber/"+id)
             .then(() => {
             });
+        },
+        deleteByNumber1(id){
+            axios.get("http://121.37.25.182:8080/deleteByNumber/"+id)
+            .then(() => {
+            });
         }
 
 
