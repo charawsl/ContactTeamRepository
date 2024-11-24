@@ -1,5 +1,6 @@
 package com.yusheng.contactbackend1.pojo;
 
+    //新表号码那个
 public class phone_number {
     int id;
     String number;

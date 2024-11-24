@@ -106,9 +106,9 @@ public class PeopleController {
 
     @PostMapping("/import")
     public Result userInfoExcelImport(@RequestParam("file") MultipartFile file) throws IOException {
-        //解析导入的excel文件成对象
+
         List<People> userInfoList = EasyExcelUtils.readExcel(People.class, file.getInputStream());
-        //处理对象
+
         for (People people : userInfoList) {
             peopleService.addPeople(people);
         }

@@ -27,7 +27,7 @@ public class People {
     public People() {
     }
 
-
+    //联系人
     public People(Integer id, String name, Short gender, String phone, String address, LocalDateTime createTime, LocalDateTime updateTime, Short favourate) {
         this.id = id;
         this.name = name;
